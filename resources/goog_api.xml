@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+   <destination_addresses>
+      <element>Washington, DC, USA</element>
+      <element>Philadelphia, PA, USA</element>
+      <element>Santa Barbara, CA, USA</element>
+      <element>Miami, FL, USA</element>
+      <element>Austin, TX, USA</element>
+      <element>Napa County, CA, USA</element>
+   </destination_addresses>
+   <origin_addresses>
+      <element>New York, NY, USA</element>
+   </origin_addresses>
+   <rows>
+      <element>
+         <elements>
+            <element>
+               <distance>
+                  <text>227 mi</text>
+                  <value>365468</value>
+               </distance>
+               <duration>
+                  <text>3 hours 54 mins</text>
+                  <value>14064</value>
+               </duration>
+               <status>OK</status>
+            </element>
+            <element>
+               <distance>
+                  <text>94.6 mi</text>
+                  <value>152193</value>
+               </distance>
+               <duration>
+                  <text>1 hour 44 mins</text>
+                  <value>6227</value>
+               </duration>
+               <status>OK</status>
+            </element>
+            <element>
+               <distance>
+                  <text>2,878 mi</text>
+                  <value>4632197</value>
+               </distance>
+               <duration>
+                  <text>1 day 18 hours</text>
+                  <value>151772</value>
+               </duration>
+               <status>OK</status>
+            </element>
+            <element>
+               <distance>
+                  <text>1,286 mi</text>
+                  <value>2069031</value>
+               </distance>
+               <duration>
+                  <text>18 hours 43 mins</text>
+                  <value>67405</value>
+               </duration>
+               <status>OK</status>
+            </element>
+            <element>
+               <distance>
+                  <text>1,742 mi</text>
+                  <value>2802972</value>
+               </distance>
+               <duration>
+                  <text>1 day 2 hours</text>
+                  <value>93070</value>
+               </duration>
+               <status>OK</status>
+            </element>
+            <element>
+               <distance>
+                  <text>2,871 mi</text>
+                  <value>4620514</value>
+               </distance>
+               <duration>
+                  <text>1 day 18 hours</text>
+                  <value>152913</value>
+               </duration>
+               <status>OK</status>
+            </element>
+         </elements>
+      </element>
+   </rows>
+   <status>OK</status>
+</root>
