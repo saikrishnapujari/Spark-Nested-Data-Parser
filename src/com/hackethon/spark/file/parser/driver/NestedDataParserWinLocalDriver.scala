@@ -16,18 +16,29 @@ object NestedDataParserWinLocalDriver extends App {
 	 */
 	sys.props.+=(("hadoop.home.dir", "C:\\hadoop_home"))
 
-	if(args.length < 2){
+	if(args.length < 3){
 		println("Not engough Arguments!")
 		System.exit(1)
 	}
 
 	val fileType = args(0)
 	val filePath = args(1)
+	val outputPath = args(2)
+	println("fileType :"+fileType)
+	println("filePath :"+filePath)
+	println("outputPath :"+outputPath)
 	
-	val parser = NestedFileParserFactory.getParser(fileType)
-	val df = parser.readFile(filePath)
-	val dfParsed = parser.flatten(df, FlattenStrategy.SCHEMA_ITERATIVE)
+	try{
+		val parser = NestedFileParserFactory.getParser(fileType)
+		val df = parser.readFile(filePath)
+		val dfParsed = parser.flatten(df, FlattenStrategy.SCHEMA_ITERATIVE)
 	
-	dfParsed.show()
+		dfParsed.show()
+		println("Final DF record count:"+dfParsed.count())
+		parser.writeFile(df, outputPath)
+	}catch{
+		case e:Exception=> println("Exception message:"+e.getMessage)
+											e.printStackTrace()
+	}
 	
 }

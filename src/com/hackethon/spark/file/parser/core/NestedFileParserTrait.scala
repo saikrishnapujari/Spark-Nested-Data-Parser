@@ -4,6 +4,7 @@ import org.apache.spark.sql.DataFrame
 import org.apache.spark.sql.types.{ArrayType,StructType,StructField}
 import org.apache.spark.sql.functions.{col,explode,to_json}
 import com.hackethon.spark.file.parser.constants.FlattenStrategy
+import org.apache.spark.sql.SaveMode
 
 
 trait NestedFileParserTrait {
@@ -11,6 +12,10 @@ trait NestedFileParserTrait {
 	def readFile(path:String):DataFrame
 	
 	def readFileStream(path:String):DataFrame
+	
+	def writeFile(df:DataFrame,path:String){
+		df.write.mode(SaveMode.Overwrite).csv(path)
+	}
 	
 	def flatten(df:DataFrame, strategy:String): DataFrame = {
 		strategy match {
