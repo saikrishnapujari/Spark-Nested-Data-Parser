@@ -7,7 +7,7 @@ import com.hackethon.spark.file.parser.session.SparkSessionHandler
 class JSONFileParserImpl extends NestedFileParserTrait{
   def readFile(path:String):DataFrame={
   	val spark = SparkSessionHandler.getSparkSession()
-  	return spark.read.option("multiLine", true).option("mode", "PERMISSIVE").json(path).repartition(4)
+  	return spark.read.format("json").option("multiline", true).load(path).repartition(4)
   }
   def readFileStream(path:String):DataFrame={
   	val spark = SparkSessionHandler.getSparkSession()
