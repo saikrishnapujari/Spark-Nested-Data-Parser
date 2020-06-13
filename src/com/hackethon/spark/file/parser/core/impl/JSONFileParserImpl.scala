@@ -9,6 +9,6 @@ class JSONFileParserImpl extends NestedFileParserTrait{
   	return spark.read.format("json").option("multiline", true).load(path).repartition(4)
   }
   def readFileStream(path:String,spark:SparkSession):DataFrame={
-  	return spark.readStream.json(path)
+  	return spark.readStream.format("json").option("multiline", true).load(path)
   }
 }

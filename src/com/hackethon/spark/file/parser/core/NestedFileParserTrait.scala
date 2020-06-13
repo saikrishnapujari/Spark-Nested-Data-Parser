@@ -59,6 +59,7 @@ trait NestedFileParserTrait {
 				case _ => //println("other type")
 				}
 			}
+			df.count()
 			schema = df.schema
 		}
 		return df
@@ -88,6 +89,7 @@ trait NestedFileParserTrait {
           return flattenRecursive(explodedf)
         case _ => //println("other type")
       }
+      df.count()
     }
     df
   }
