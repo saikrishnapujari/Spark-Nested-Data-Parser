@@ -74,18 +74,18 @@ trait NestedFileParserTrait {
       val fieldtype = field.dataType
       val fieldName = field.name
       fieldtype match {
-        case arrayType: ArrayType =>
-          val fieldNamesExcludingArray = fieldNames.filter(_!=fieldName)
-          val fieldNamesAndExplode = fieldNamesExcludingArray ++ Array(s"explode_outer($fieldName) as $fieldName")
+        case arrayType: ArrayType => //println("flatten array")
+          val fieldNamesWithoutArray = fieldNames.filter(_!=fieldName)
+          val fieldNamesAndExplode = fieldNamesWithoutArray ++ Array(s"explode_outer($fieldName) as $fieldName")
           val explodedDf = df.selectExpr(fieldNamesAndExplode:_*)
           return flattenRecursive(explodedDf)
-        case structType: StructType =>
-          val childFieldnames = structType.fieldNames.map(childname => fieldName +"."+childname)
-          val newfieldNames = fieldNames.filter(_!= fieldName) ++ childFieldnames
-          val renamedcols = newfieldNames.map(x => (col(x.toString()).as(x.toString().replace(".", "_"))))
-         val explodedf = df.select(renamedcols:_*)
+        case structType: StructType => //println("flatten struct")
+          val innerFieldnames = structType.fieldNames.map(childname => fieldName +"."+childname)
+          val newfieldNames = fieldNames.filter(_!= fieldName) ++ innerFieldnames
+          val renamedCols = newfieldNames.map(x => (col(x.toString()).as(x.toString().replace(".", "_"))))
+         val explodedf = df.select(renamedCols:_*)
           return flattenRecursive(explodedf)
-        case _ =>
+        case _ => //println("other type")
       }
     }
     df
