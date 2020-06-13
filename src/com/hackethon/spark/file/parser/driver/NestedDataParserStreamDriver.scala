@@ -23,7 +23,7 @@ object NestedDataParserStreamDriver extends App {
 	
 		dfParsed.show()
 		println("Final DF record count:"+dfParsed.count())
-		parser.writeFile(df, outputPath)
+		parser.writeFile(dfParsed, outputPath)
 	}catch{
 		case e:Exception=> println("Exception message:"+e.getMessage)
 											e.printStackTrace()
