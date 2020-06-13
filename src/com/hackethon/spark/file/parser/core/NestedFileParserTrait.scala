@@ -5,13 +5,14 @@ import org.apache.spark.sql.types.{ArrayType,StructType,StructField}
 import org.apache.spark.sql.functions.{col,explode,to_json}
 import com.hackethon.spark.file.parser.constants.FlattenStrategy
 import org.apache.spark.sql.SaveMode
+import org.apache.spark.sql.SparkSession
 
 
 trait NestedFileParserTrait {
   
-	def readFile(path:String):DataFrame
+	def readFile(path:String,spark:SparkSession):DataFrame
 	
-	def readFileStream(path:String):DataFrame
+	def readFileStream(path:String,spark:SparkSession):DataFrame
 	
 	def writeFile(df:DataFrame,path:String){
 		df.write.mode(SaveMode.Overwrite).csv(path)

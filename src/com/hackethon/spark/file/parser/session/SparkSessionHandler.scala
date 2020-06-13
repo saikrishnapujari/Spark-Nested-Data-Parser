@@ -6,10 +6,15 @@ import org.apache.spark.sql.SparkSession
 
 object SparkSessionHandler {
   def getSparkSession():SparkSession={
-		return SparkSession.builder().master("local").appName("Sample").getOrCreate()
+		return SparkSession.builder().appName("SparkNestedDataParser").getOrCreate()
   }
   
   def getSparkStreamSession():SparkSession={
-		return SparkSession.builder().master("local").appName("Sample").getOrCreate()
+		return SparkSession.builder().appName("SparkNestedDataParser").getOrCreate()
   }
+  
+  def getSparkSessionLocal():SparkSession={
+		return SparkSession.builder().master("local").appName("SparkNestedDataParser").getOrCreate()
+  }
+
 }

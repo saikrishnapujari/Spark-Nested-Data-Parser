@@ -2,6 +2,7 @@ package com.hackethon.spark.file.parser.driver
 
 import com.hackethon.spark.file.parser.core.NestedFileParserFactory
 import com.hackethon.spark.file.parser.constants.FlattenStrategy
+import com.hackethon.spark.file.parser.session.SparkSessionHandler
 
 object NestedDataParserStreamDriver extends App {
   if(args.length < 3){
@@ -16,10 +17,10 @@ object NestedDataParserStreamDriver extends App {
 	println("fileType :"+fileType)
 	println("filePath :"+filePath)
 	println("outputPath :"+outputPath)
-	
+	val spark = SparkSessionHandler.getSparkStreamSession()
 	try{
 		val parser = NestedFileParserFactory.getParser(fileType)
-		val df = parser.readFileStream(filePath)
+		val df = parser.readFileStream(filePath,spark)
 		val dfParsed = if(flattenType.equals("1")){parser.flatten(df, FlattenStrategy.SCHEMA_ITERATIVE)}else if(flattenType.equals("2")){parser.flatten(df, FlattenStrategy.SCHEMA_RECURSIVE)}else{parser.flatten(df, FlattenStrategy.SCHEMA_ITERATIVE)}
 	
 		dfParsed.show()
@@ -28,5 +29,7 @@ object NestedDataParserStreamDriver extends App {
 	}catch{
 		case e:Exception=> println("Exception message:"+e.getMessage)
 											e.printStackTrace()
+	}finally{
+		spark.stop()
 	}
 }
