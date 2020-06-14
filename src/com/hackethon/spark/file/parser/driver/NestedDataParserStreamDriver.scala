@@ -19,7 +19,6 @@ object NestedDataParserStreamDriver extends App {
 	println("filePath :"+filePath)
 	println("outputPath :"+outputPath)
 	val spark = SparkSessionHandler.getSparkStreamSession()
-	spark.sql("set spark.sql.streaming.schemaInference=true")
 	val schema = spark.read.json(sampleData).schema
 	try{
 		val parser = NestedFileParserFactory.getParser(fileType)
