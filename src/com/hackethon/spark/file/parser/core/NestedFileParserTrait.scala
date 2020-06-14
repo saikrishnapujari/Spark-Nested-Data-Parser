@@ -18,6 +18,10 @@ trait NestedFileParserTrait {
 		df.write.mode(SaveMode.Overwrite).csv(path)
 	}
 	
+	def writeStream(df:DataFrame,path:String){
+		df.writeStream.start(path)
+	}
+	
 	def flatten(df:DataFrame, strategy:String): DataFrame = {
 		strategy match {
 			case FlattenStrategy.SCHEMA_ITERATIVE => return flattenIterative(df)
