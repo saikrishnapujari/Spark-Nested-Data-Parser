@@ -17,7 +17,7 @@ object NestedDataParserWinLocalDriver extends App {
 	 */
 	sys.props.+=(("hadoop.home.dir", "C:\\hadoop_home"))
 
-	if(args.length < 3){
+	if(args.length < 4){
 		println("Not engough Arguments!")
 		System.exit(1)
 	}

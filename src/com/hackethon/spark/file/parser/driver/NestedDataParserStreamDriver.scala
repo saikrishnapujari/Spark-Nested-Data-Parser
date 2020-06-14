@@ -5,7 +5,7 @@ import com.hackethon.spark.file.parser.constants.FlattenStrategy
 import com.hackethon.spark.file.parser.session.SparkSessionHandler
 
 object NestedDataParserStreamDriver extends App {
-  if(args.length < 3){
+  if(args.length < 4){
 		println("Not engough Arguments!")
 		System.exit(1)
 	}
@@ -18,6 +18,7 @@ object NestedDataParserStreamDriver extends App {
 	println("filePath :"+filePath)
 	println("outputPath :"+outputPath)
 	val spark = SparkSessionHandler.getSparkStreamSession()
+	spark.sql("set spark.sql.streaming.schemaInference=true")
 	try{
 		val parser = NestedFileParserFactory.getParser(fileType)
 		val df = parser.readFileStream(filePath,spark)

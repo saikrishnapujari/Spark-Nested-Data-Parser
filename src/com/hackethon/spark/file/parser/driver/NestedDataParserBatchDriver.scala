@@ -6,7 +6,7 @@ import com.hackethon.spark.file.parser.session.SparkSessionHandler
 
 object NestedDataParserBatchDriver extends App{
 	
-	if(args.length < 3){
+	if(args.length < 4){
 		println("Not engough Arguments!")
 		System.exit(1)
 	}
