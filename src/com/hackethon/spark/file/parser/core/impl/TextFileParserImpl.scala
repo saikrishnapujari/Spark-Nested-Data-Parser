@@ -10,6 +10,6 @@ class TextFileParserImpl extends NestedFileParserTrait{
   	return spark.read.text(path).repartition(4)
   }
   def readFileStream(path:String,spark:SparkSession,schema:StructType):DataFrame={
-  	return spark.readStream.schema(schema).text(path)
+  	return spark.readStream.schema(schema).option("checkpointLocation", path+"/cp").text(path)
   }
 }

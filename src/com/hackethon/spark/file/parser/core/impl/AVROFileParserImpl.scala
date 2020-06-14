@@ -10,6 +10,6 @@ class AVROFileParserImpl extends NestedFileParserTrait{
   	return spark.read.format("com.databricks.spark.avro").load(path).repartition(4)
   }
   def readFileStream(path:String,spark:SparkSession,schema:StructType):DataFrame={
-  	return spark.readStream.schema(schema).format("com.databricks.spark.avro").load(path)
+  	return spark.readStream.schema(schema).option("checkpointLocation", path+"/cp").format("com.databricks.spark.avro").load(path)
   }
 }
