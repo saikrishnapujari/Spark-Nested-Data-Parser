@@ -12,7 +12,7 @@ trait NestedFileParserTrait {
   
 	def readFile(path:String,spark:SparkSession):DataFrame
 	
-	def readFileStream(path:String,spark:SparkSession):DataFrame
+	def readFileStream(path:String,spark:SparkSession,schema:StructType):DataFrame
 	
 	def writeFile(df:DataFrame,path:String){
 		df.write.mode(SaveMode.Overwrite).csv(path)
