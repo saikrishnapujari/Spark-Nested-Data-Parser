@@ -6,6 +6,7 @@ import org.apache.spark.sql.functions.{col,explode,to_json}
 import com.hackethon.spark.file.parser.constants.FlattenStrategy
 import org.apache.spark.sql.SaveMode
 import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.streaming.StreamingQuery
 
 
 trait NestedFileParserTrait {
@@ -18,7 +19,7 @@ trait NestedFileParserTrait {
 		df.write.mode(SaveMode.Overwrite).csv(path)
 	}
 	
-	def writeStream(df:DataFrame,path:String){
+	def writeStream(df:DataFrame,path:String):StreamingQuery={
 		df.writeStream.start(path)
 	}
 	

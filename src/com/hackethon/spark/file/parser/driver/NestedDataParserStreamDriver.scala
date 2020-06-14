@@ -25,9 +25,8 @@ object NestedDataParserStreamDriver extends App {
 		val df = parser.readFileStream(filePath,spark,schema)
 		val dfParsed = if(flattenType.equals("1")){parser.flatten(df, FlattenStrategy.SCHEMA_ITERATIVE)}else if(flattenType.equals("2")){parser.flatten(df, FlattenStrategy.SCHEMA_RECURSIVE)}else{parser.flatten(df, FlattenStrategy.SCHEMA_ITERATIVE)}
 	
-		dfParsed.show()
-		println("Final DF record count:"+dfParsed.count())
-		parser.writeStream(dfParsed, outputPath)
+		val qry = parser.writeStream(dfParsed, outputPath)
+		qry.awaitTermination()
 	}catch{
 		case e:Exception=> println("Exception message:"+e.getMessage)
 											e.printStackTrace()
