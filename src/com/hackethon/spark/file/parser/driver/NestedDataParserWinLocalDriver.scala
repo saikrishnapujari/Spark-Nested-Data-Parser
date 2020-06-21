@@ -3,7 +3,9 @@ package com.hackethon.spark.file.parser.driver
 import com.hackethon.spark.file.parser.core.NestedFileParserFactory
 import com.hackethon.spark.file.parser.constants.FlattenStrategy
 import com.hackethon.spark.file.parser.session.SparkSessionHandler
-
+/**
+ * @author Sai Krishna P
+ */
 object NestedDataParserWinLocalDriver extends App {
   
 	/*

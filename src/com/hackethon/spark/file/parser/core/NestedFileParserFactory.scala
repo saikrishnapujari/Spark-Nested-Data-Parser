@@ -5,7 +5,9 @@ import com.hackethon.spark.file.parser.core.impl.JSONFileParserImpl
 import com.hackethon.spark.file.parser.core.impl.TextFileParserImpl
 import com.hackethon.spark.file.parser.core.impl.AVROFileParserImpl
 import com.hackethon.spark.file.parser.core.impl.XMLFileParserImpl
-
+/**
+ * @author Sai Krishna P
+ */
 object NestedFileParserFactory {
   def getParser(fileType:String):NestedFileParserTrait={
   	fileType match {

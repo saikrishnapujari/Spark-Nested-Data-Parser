@@ -8,7 +8,9 @@ import org.apache.spark.sql.SaveMode
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.streaming.StreamingQuery
 
-
+/**
+ * @author Sai Krishna P
+ */
 trait NestedFileParserTrait {
   
 	def readFile(path:String,spark:SparkSession):DataFrame
