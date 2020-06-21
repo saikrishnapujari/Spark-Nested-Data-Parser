@@ -1,5 +1,5 @@
 # Spark-Nested-Data-Parser
- Nested Data (JSON/AVRO/XML) Parsing and Flattening in Spark
+ Nested Data (JSON/AVRO/XML) Parsing and Flattening using Apache-Spark.
 
 Implementation steps:
 1. Load JSON/XML to a spark data frame.
